@@ -19,11 +19,15 @@ import pl.krawczyk.myhome.services.interfaces.LightService;
 @Service
 public class LightServiceImpl implements LightService {
     
+    private final LightRepository lightRepository;
+    
     @Autowired
-    private LightRepository lightRepository;
+    public LightServiceImpl(LightRepository lightRepository) {
+        this.lightRepository = lightRepository;
+    }
 
     @Override
-    public LightEntity findById(Integer id) throws EntityNotFoundException {
+    public LightEntity findById(String id) throws EntityNotFoundException {
         LightEntity light = lightRepository.findOne(id);
         if (light == null) {
             throw new EntityNotFoundException("Light entity identify by id #" + id + " not found");
@@ -46,20 +50,20 @@ public class LightServiceImpl implements LightService {
 
     @Override
     public LightEntity update(LightEntity light) throws EntityNotFoundException {
-        LightEntity oldLight = lightRepository.findOne(light.getId());
-        if (oldLight == null) {
+        LightEntity updated = lightRepository.findOne(light.getId());
+        if (updated == null) {
             throw new EntityNotFoundException("Light entity identify by id #" + light.getId() + " not found");
         }
         if (StringUtils.isNotBlank(light.getName())) {
-            oldLight.setName(light.getName());
+            updated.setName(light.getName());
         }
-        oldLight.setOn(light.isOn());
-        oldLight = lightRepository.save(oldLight);
-        return oldLight;
+        updated.setOn(light.isOn());
+        updated = lightRepository.save(updated);
+        return updated;
     }
 
     @Override
-    public LightEntity delete(Integer id) throws EntityNotFoundException {
+    public LightEntity delete(String id) throws EntityNotFoundException {
         LightEntity light = lightRepository.findOne(id);
         if (light == null) {
             throw new EntityNotFoundException("Light entity identify by id #" + id + " not found");

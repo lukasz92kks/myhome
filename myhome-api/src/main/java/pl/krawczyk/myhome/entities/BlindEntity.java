@@ -1,13 +1,15 @@
-package pl.krawczyk.myhome.dto.light;
+package pl.krawczyk.myhome.entities;
 
-import pl.krawczyk.myhome.modelbase.LightBase;
+import org.springframework.data.annotation.Id;
+import pl.krawczyk.myhome.modelbase.BlindBase;
 
 /**
  *
  * @author Łukasz
  */
-public class LightDTO extends LightBase {
+public class BlindEntity extends BlindBase {
     
+    @Id
     private String id;
 
     public String getId() {

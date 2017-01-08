@@ -24,7 +24,7 @@ import pl.krawczyk.myhome.services.interfaces.LightService;
  * @author Łukasz
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/lights")
 public class LightController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class LightController {
     private LightService lightService;
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public LightDTO findById(@PathVariable("id") Integer id) throws EntityNotFoundException {
+    public LightDTO findById(@PathVariable("id") String id) throws EntityNotFoundException {
         LightEntity light = lightService.findById(id);
         return modelMapper.map(light, LightDTO.class);
     }
@@ -60,7 +60,7 @@ public class LightController {
     }
     
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public LightDTO delete(@PathVariable Integer id) throws EntityNotFoundException {
+    public LightDTO delete(@PathVariable String id) throws EntityNotFoundException {
         LightEntity light = lightService.delete(id);
         return modelMapper.map(light, LightDTO.class);
     }

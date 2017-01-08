@@ -11,7 +11,7 @@ import pl.krawczyk.myhome.exceptions.EntityNotFoundException;
  */
 public interface LightService {
     
-    LightEntity findById(Integer id) throws EntityNotFoundException;
+    LightEntity findById(String id) throws EntityNotFoundException;
     
     LightEntity create(LightEntity light);
     
@@ -19,5 +19,5 @@ public interface LightService {
 
     LightEntity update(LightEntity light) throws EntityNotFoundException;
     
-    LightEntity delete(Integer id) throws EntityNotFoundException;
+    LightEntity delete(String id) throws EntityNotFoundException;
 }

@@ -1,12 +1,12 @@
-package pl.krawczyk.myhome.dto.light;
+package pl.krawczyk.myhome.dto.blind;
 
-import pl.krawczyk.myhome.modelbase.LightBase;
+import pl.krawczyk.myhome.modelbase.BlindBase;
 
 /**
  *
  * @author Łukasz
  */
-public class LightDTO extends LightBase {
+public class BlindDTO extends BlindBase {
     
     private String id;
 
