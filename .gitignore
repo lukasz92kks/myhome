@@ -2,3 +2,6 @@
 /myhome-api/target/
 /myhome-api/nb-configuration.xml
 /myhome-api/nbactions.xml
+/myhome-microcontroller/target/
+/myhome-microcontroller/nb-configuration.xml
+/myhome-microcontroller/nbactions.xml
